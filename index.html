@@ -18,7 +18,7 @@
     </nav>
 
     <div class="container">
-        <h1>Home</h1>
+        
     </div>
 
     <script>
@@ -27,6 +27,8 @@
             var hash = window.location.href.split('#');
             if(hash.length == 2) {
                 load(hash[1] + '.html','.container');
+            }else{
+                load("home.html", "main");
             }
         }
 
