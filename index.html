@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dynamic loading pages</title>
+</head>
+<body onload="loadHash();">
+
+    <nav>
+        <ul>
+            <li><a href="">Home</a></li>
+            <li><a href="#about" onclick="load('about.html','.container');" >About</a></li>
+            <li><a href="#realisations" onclick="load('realisations.html','.container');">Realisation</a></li>
+            <li><a href="#contact" onclick="load('contact.html','.container');">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Home</h1>
+    </div>
+
+    <script>
+
+        const loadHash = () => {
+            var hash = window.location.href.split('#');
+            if(hash.length == 2) {
+                load(hash[1] + '.html','.container');
+            }
+        }
+
+        const load = (page, container) => {
+            fetch(page).
+            then(response => response.text()).
+            then(txt => {
+                document.querySelector(container).innerHTML = txt;
+            });
+        }
+        
+    </script>
+      
+    
+</body>
+</html>
